@@ -16,4 +16,10 @@ describe('LeftRotateString.vue', () => {
     rotateButton.trigger('click');
     expect(wrapper.vm.inputText).toContain('rojectlionP');
   });
+  it('버튼 클릭 시 클릭횟수 증가', () => {
+    expect(wrapper.vm.counter).toBe(0);
+    const counterButton = wrapper.find('.counter_btn');
+    counterButton.trigger('click');
+    expect(wrapper.vm.counter).toBe(1);
+  });
 });
