@@ -1,11 +1,15 @@
-/* eslint-disable vue/no-dupe-keys */
 <template>
     <div class="wrap-inuput-bar" >
         <div class="input-bar">
-            <input type="text" v-model="inputText" />
+            <input type="text" v-model="customInputText" @input="changeInput"/>
             <button class="rotate_btn" @click="rotateButton">회전</button>
-            <button class="counter_btn" v-on:click="greet">클릭횟수</button>
-            <p>{{inputText}}</p>
+            <button 
+            class="counter_btn" 
+            v-on:click="showClickedInfo" 
+            data-test="clickCounter">
+            클릭횟수
+            </button>
+            <p data-test="customInputText">{{customInputText}}</p>
             <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
         </div>
     </div>
@@ -19,25 +23,19 @@ export default {
     },
   },
   data() {
-    'Vue.js';
-
     return {
-      inputText: this.defaultText,
+      customInputText: this.defaultText,
       counter: 0,
     };
   },
   methods: {
     rotateButton() {
-      this.inputText = this.inputText.slice(1) + this.inputText.slice(0, 1);
+      this.customInputText = this.customInputText.slice(1) + this.customInputText.slice(0, 1);
     },
-    greet(event) {
+    showClickedInfo() {
       this.counter += 1;
-      // 메소드 안에서 사용하는 `this` 는 Vue 인스턴스를 가리킵니다
+      // eslint-disable-next-line no-alert
       alert(`위 버튼을 클릭한 횟수는 ${this.counter}번 입니다.`);
-      // `event` 는 네이티브 DOM 이벤트입니다
-      if (event) {
-        alert('계속하시겠습니까?');
-      }
     },
   },
 };
