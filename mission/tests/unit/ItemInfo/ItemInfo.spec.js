@@ -1,10 +1,16 @@
 import { mount } from '@vue/test-utils';
-import ItemInfoPage from '@/views/ItemInfo.vue';
+import ProductItem from '@/components/ProductItem.vue';
 
-describe('ItemInfoPage', () => {
-  it('redners ItemInfoPage', () => {
-    const wrapper = mount(ItemInfoPage);
+describe('ProductItem', () => {
+  const wrapper = mount(ProductItem);
 
-    expect(wrapper.find('#item-info-page').exists()).toBe(true);
+  it('redners ProductItem', () => {
+    expect(wrapper.find('.product').exists()).toBe(true);
+  });
+  it('renders img', () => {
+    expect(wrapper.find('.product__image').exists()).toBe(true);
+  });
+  it('renders market information', () => {
+    expect(wrapper.find('.product__text').exists()).toBe(true);
   });
 });
