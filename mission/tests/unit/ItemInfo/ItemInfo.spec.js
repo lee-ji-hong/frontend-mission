@@ -1,16 +1,36 @@
 import { mount } from '@vue/test-utils';
-import ProductItem from '@/components/ProductItem.vue';
+import ItemInfoPage from '@/views/ItemInfo.vue';
 
-describe('ProductItem', () => {
-  const wrapper = mount(ProductItem);
+describe('ItemInfoPage', () => {
+  it('redners ItemInfoPage', () => {
+    const wrapper = mount(ItemInfoPage);
 
-  it('redners ProductItem', () => {
-    expect(wrapper.find('.product').exists()).toBe(true);
+    expect(wrapper.find('#item-info-page').exists()).toBe(true);
   });
-  it('renders img', () => {
-    expect(wrapper.find('.product__image').exists()).toBe(true);
+
+  it('item에서 product name 렌더링 확인', () => {
+    const testProductName = 'test product name';
+    const wrapper = mount(ItemInfoPage, {
+      data() {
+        return {
+          name: testProductName,
+        };
+      },
+    });
+
+    expect(wrapper.get('[data-test="product-name"]').text()).toBe(testProductName);
   });
-  it('renders market information', () => {
-    expect(wrapper.find('.product__text').exists()).toBe(true);
+
+  it('item에서 description 렌더링 확인', () => {
+    const testDescription = 'test Description';
+    const wrapper = mount(ItemInfoPage, {
+      data() {
+        return {
+          name: testDescription,
+        };
+      },
+    });
+
+    expect(wrapper.get('[data-test="test-description"]').text()).toBe(testDescription);
   });
 });

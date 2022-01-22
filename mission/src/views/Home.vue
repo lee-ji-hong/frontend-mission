@@ -1,41 +1,21 @@
 <template>
-  <section>
-    <ul data-test="existshome">
-      <product-item
-        v-for="prod in products"
-        :key="prod.id"
-        :id="prod.id"
-        :name="prod.name"
-        :image="prod.image"
-        :percent="prod.percent"
-        :price="prod.price"
-      ></product-item>
-    </ul>
-  </section>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <LeftRotateString/>
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ProductItem from '@/components/ProductItem.vue';
+import HelloWorld from '@/components/HelloWorld.vue';
+import LeftRotateString from '@/components/LeftRotateString.vue';
 
 export default {
   name: 'Home',
   components: {
-    ProductItem,
-  },
-  computed: {
-    products() {
-      return this.$store.getters['prods/products'];
-    },
+    HelloWorld,
+    LeftRotateString,
   },
 };
 </script>
-
-<style scoped>
-ul {
-  list-style: none;
-  margin: 2rem auto;
-  padding: 0;
-  max-width: 40rem;
-}
-</style>
