@@ -1,7 +1,23 @@
 <template>
 <div id="item-info-page">
   <div class="detail__data" data-test="product-name">
-    {{ name }}
+    <div class="detail__image">
+      <img alt="product_main" src="../assets/list_prev_btn.png" class="detail_prev_btn"/>
+      <img class="detail_main_image" :src="image" :alt="title">
+    </div>
+    <div class="detail__shop">
+      <div class="detail__shop_image">
+        <img class="detail_main_image" :src="seller.seller_id" :alt="profile_seller">
+      </div>
+      <div class="detail__shop_name">
+        <h3>세미닌</h3>
+        <p>#페미닌 #러블리 #마켓 만족도 89%</p>
+      </div>
+      <div class="detail__shop_btn">
+        <h3>하트</h3>
+        <!--<button @click="addToCart">Add to Cart</button>-->
+      </div>
+    </div>
   </div>
 </div>
 </template>
@@ -73,5 +89,134 @@ ul {
   margin: 2rem auto;
   padding: 0;
   max-width: 40rem;
+}
+body{
+  margin:0 auto;
+}
+ul{
+  margin:0;
+}
+li{
+  box-shadow: none;
+  margin:0;
+  padding:0;
+}
+.detail{
+  position:relative;
+}
+.detail__data{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.detail__image{
+  height: 400px;
+}
+.detail_main_image{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px 0px 5px 5px;
+  /* box-shadow: 8px 8px 8px 0.1px rgba(0, 0, 0, 0.2); */
+}
+.detail_prev_btn{
+  border: none;
+  left: 14px;
+  height: 25px;
+  cursor: hand;
+  filter: alpha(opacity=1);
+  position: absolute;
+  top: 20px;
+  border-radius: none;
+  z-index: 100;
+}
+.detail__shop{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+.detail__shop_image{
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail__shop_image img{
+  height: 42px;
+  border-radius: 50%;
+}
+.detail__shop_name{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+}
+.detail__shop_name h3{
+  font-size: 15px;
+}
+.detail__shop_name p{
+  font-size: 13px;
+  color: #9f9d9d;
+}
+.detail__shop_btn{
+  width: 15%;
+  padding: 5px;
+}
+.detail__actions{
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+.detail__actions h3{
+  font-size: 15px;
+  padding: 10px 15px;
+  text-align: left;
+}
+.detail__actions_cost{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 15px;
+}
+.detail__actions_cost_percent{
+  color: #f34f4f;
+  font-size: 19px;
+  margin-right: 5px;
+}
+.detail__actions_cost_price{
+  font-size: 19px;
+  margin-right: 5px;
+}
+.detail__actions_cost_sale{
+  color: #9f9d9d;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+.description{
+  font-size: 10px;
+  line-height: 2;
+}
+.description_p{
+  margin: 30px 0px;
+}
+button{
+  outline: none;
+  font: inherit;
+  cursor: pointer;
+  background-color: #0278ff;
+  color: white;
+  border: 1px solid #0278ff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+}
+button:hover,
+button:active{
+  background-color: #0a46b4;
+  border-color: #0a46b4;
 }
 </style>
