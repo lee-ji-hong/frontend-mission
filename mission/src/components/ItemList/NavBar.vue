@@ -3,8 +3,8 @@
     <li class="nav_category"
     v-for="category in categorys"
     :key="category.category_id">
-      <html v-html="category.image"></html>
-      <span class="material-icons">{{category.name}}</span>
+      <html data-test="test-image" v-html="category.image"></html>
+      <span class="material-icons" data-test="test-name">{{category.name}}</span>
     </li>
   </footer>
 </template>
@@ -41,12 +41,17 @@ export default {
 </script>
 <style>
 footer{
+  border-top: 1px solid #ddd;
   list-style: none;
   display: flex;
   align-items: center;
   justify-content:center;
   background-color:white;
   height: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .nav_category{
   display: flex;
