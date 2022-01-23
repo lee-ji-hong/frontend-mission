@@ -8,7 +8,8 @@
       :src="itemList.image"
       />
     </div>
-    <div>
+    <div class="product_price_wrap">
+      <h1 class="porduct_percent" v-if="itemList.percent > 0">{{itemList.percent}}%</h1>
       <h1 class="porduct_price" data-test="test-price">{{itemList.price}}</h1>
     </div>
     <div class="porduct_description">
@@ -37,6 +38,7 @@ export default {
           name: '[블랙컬러추가][엘레강스/고퀄set] 마벨 트위드 자켓 스커트 투피스 세트',
           price: ' 42,000원',
           original_price: '52,000원',
+          percent: 20,
         },
         {
           list_id: 'l2',
@@ -44,6 +46,7 @@ export default {
           name: '[백화점퀄SET] 에메랄드 쥬얼리 투피스 세트',
           price: ' 59,000원',
           original_price: '72,000원',
+          percent: 18,
         },
         {
           list_id: 'l3',
@@ -51,13 +54,15 @@ export default {
           name: '[3컬러/청순/러블리] 엔젤 리본 타이bl',
           price: ' 19,500원',
           original_price: '26,000원',
+          percent: 25,
         },
         {
           list_id: 'l4',
           image: 'https://shop-phinf.pstatic.net/20210901_21/1630474070340jcEaU_JPEG/31609912957691625_1453441604.JPG?type=m510',
           name: '[set가격/가성비갑] 진주 패턴 트위드 자켓 스커트 투피스 세트',
           price: ' 41,000원',
-          original_price: '50,000원',
+          original_price: '41,000원',
+          percent: 0,
         },
         {
           list_id: 'l5',
@@ -65,6 +70,7 @@ export default {
           name: '[무배] 시스루 브이넥 리본끈 랩 블라우스',
           price: ' 34,500원',
           original_price: '40,000원',
+          percent: 13,
         },
         {
           list_id: 'l6',
@@ -72,13 +78,15 @@ export default {
           name: '하운드 체크 진주단추 니트가디건 스커트 투피스 세트',
           price: ' 25,500원',
           original_price: '36,000원',
+          percent: 29,
         },
         {
           list_id: 'l7',
           image: 'https://shop-phinf.pstatic.net/20200713_155/1594649590461Lutdu_JPEG/32010328833749444_849451809.JPG?type=m510',
           name: '[무배] 7센치 발등스트랩 샌들 슬리퍼',
           price: ' 39,000원',
-          original_price: '45,000원',
+          original_price: '39,000원',
+          percent: 0,
         },
       ],
     };
@@ -106,13 +114,19 @@ li{
   width:100%;
   border-radius: 14px;
 }
+.product_price_wrap{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.porduct_percent{
+  color: #f34f4f;
+  font-size: 15px;
+  padding-left: 5px;
+}
 .porduct_price{
   font-size: 15px;
   padding-left: 5px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
 }
 .porduct_description{
   padding-left: 5px;
