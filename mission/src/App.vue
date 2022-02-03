@@ -1,16 +1,16 @@
 <template>
-<ItemInfo/>
+<ItemList/>
   <router-view />
 </template>
 
 <script>
 // @ is an alias to /src
-import ItemInfo from '@/views/ItemInfo.vue';
+import ItemList from '@/views/ItemList.vue';
 
 export default {
   name: 'App',
   components: {
-    ItemInfo,
+    ItemList,
   },
 };
 </script>

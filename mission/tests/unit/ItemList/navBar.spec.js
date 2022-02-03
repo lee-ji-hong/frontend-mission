@@ -20,5 +20,4 @@ describe('NavBar', () => {
 
     expect(wrapper.get('[data-test="test-name"]').text()).toBe(testName);
   });
-
 });
