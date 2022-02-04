@@ -4,8 +4,18 @@ import ItemListPage from '@/views/ItemList.vue';
 const routes = [
   {
     path: '/',
+    redirect: '/list',
     name: 'ItemList',
     component: ItemListPage,
+  },
+  {
+    path: '/list',
+    name: 'ItemList',
+    component: ItemListPage,
+  },
+  {
+    path: '/Item',
+    component: () => import('../views/ItemInfo.vue'),
   },
 ];
 
