@@ -1,7 +1,7 @@
 <template>
   <header class="item-list-header">
     <div class="headbar" :class="{ 'hidden-headbar': !showHeadbar }">
-      <h1>SEMININ</h1>
+      <router-link to="/list"><h1>SEMININ</h1></router-link>
     </div>
   </header>
 </template>
@@ -54,10 +54,10 @@ header{
 h1{
   color: black;
   font-size:28px;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 .headbar {
-  height: 60px;
+  /* height: 75px; */
   width: 100%;
   background: white;
   position: fixed;
