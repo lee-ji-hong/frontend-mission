@@ -2,13 +2,14 @@
   <div class="detail-wrap">
     <div class="detail__data">
       <div class="detail__image">
-        <img class="detail_main_image" :src="item.image" >
+        <img class="detail_main_image" :src="item.image">
       </div>
 
       <div class="detail__shop">
         <div class="detail__shop_image">
           <img :src="item.seller.profile_image" alt="">
         </div>
+
         <div class="detail__shop_name">
           <h3>
             <strong>{{ item.seller.name }}</strong>
@@ -17,80 +18,78 @@
               #{{ tag }}
           </p>
         </div>
+
         <div data-test="company-star" class="detail__shop_btn">
           <span >
           <i class="far fa-star w3-right"></i>
-        </span>
+          </span>
         </div>
       </div>
     </div>
 
-      <div class="detail__actions">
-          <div>
-            <h3 data-test="name">{{ item.name }}</h3>
-          </div>
-          <div class="detail__actions_cost">
-            <div
-            class="detail__actions_cost_percent"
-            id="discount"
-            data-test="discount-rate"
-            v-if="this.item.original_price">
-              {{ display_discount_rate }}%
-            </div>
-            <div data-test="price" class="detail__actions_cost_price">
-              {{ priceWidthComma(item.price) }}원
-            </div>
-            <div class="detail__actions_cost_sale" v-if="this.item.original_price">
-              {{ priceWidthComma(item.original_price) }}원
-            </div>
+    <div class="detail__actions">
+      <div>
+        <h3 data-test="name">{{ item.name }}</h3>
+      </div>
+      <div class="detail__actions_cost">
+        <div
+          class="detail__actions_cost_percent"
+          id="discount"
+          data-test="discount-rate"
+          v-if="this.item.original_price">
+          {{ display_discount_rate }}%
         </div>
-
-        <div data-test="product-detail" class="product-detail">
-          <p class="detail-title">상품 설명</p>
-          <div class="description_p" v-html="item.description"></div>
+        <div data-test="price" class="detail__actions_cost_price">
+          {{ priceWidthComma(item.price)}}원
+        </div>
+        <div class="detail__actions_cost_sale" v-if="this.item.original_price">
+          {{ priceWidthComma(item.original_price) }}원
         </div>
       </div>
 
-      <div id="reviews">
-        <div
-          class="review w3-row"
-          v-for="review in reviews"
-          :key="review.review_no"
-        >
+      <div class="product-detail">
+        <p class="detail-title">상품 설명</p>
+        <div class="description_p" v-html="item.description"></div>
+      </div>
+    </div>
+
+    <div class="detail-review-wrap">
+      <p class="review-title">Review</p>
+
+      <div class="review-list" v-for="reviewer in item.reviews" :key="reviewer">
+
           <div class="review-text">
             <div class="review-row-1">
-              <div class="review-writer" data-test="review-writer">
-                {{ review.writer }}
-              </div>
+              <div class="review-writer" data-test="review-writer">{{ reviewer.writer }}</div>
+              <div class="review-created" data-test="review-created">{{ reviewer.created }}</div>
               <div class="review-created" data-test="review-created">
-                {{ review.created }}
+                Like: {{ reviewer.likes_count }}
               </div>
             </div>
-            <div class="review-title" data-test="review-title">
-              {{ review.title }}
-            </div>
-            <div class="review-content" data-test="review-content">
-              {{ review.content }}
+            <div class="review-row-2">
+            <div class="review-title" data-test="review-title">{{ reviewer.title }}</div>
+            <div class="review-content" data-test="review-content">{{ reviewer.content }}</div>
             </div>
           </div>
+
           <div
-            v-if="doesReviewImgExists(review)"
+            v-if="doesReviewImgExists(reviewer)"
             class="review-img"
             data-test="review-img"
           >
-            <img class="w3-right" :src="review.img" />
+            <img :src="reviewer.img" alt=""
+            style="width: 100px; height: 100px;"
+            >
           </div>
-        </div>
       </div>
-      <div id="footer">
-        <button
-          id="btn-pruchase"
-          class="w3-round-large"
-          data-test="footer-price"
-        >
-          {{ `${priceStringWithComma(price)} 구매` }}
-        </button>
-      </div>
+    </div>
+
+    <div class="footer">
+
+      <button data-test="footer-price" class="footer-btn">
+        <span v-if="this.item.original_price">{{ priceWidthComma(item.price) }}</span>
+        <span v-else>{{ priceWidthComma(item.original_price) }}</span>원 구매
+      </button>
     </div>
   </div>
 </template>
@@ -129,7 +128,7 @@ export default {
     },
   },
   computed: {
-    display_discount_rate() {
+    showDiscountRate() {
       const rate = ((this.item.original_price - this.item.price) / this.item.original_price) * 100;
 
       return Number.prototype.toFixed.call(rate, 0);
@@ -139,6 +138,8 @@ export default {
 </script>
 
 <style scoped>
+/**지홍 */
+
 .detail-wrap{
   position:relative;
   box-shadow: none;
@@ -278,5 +279,32 @@ button:active {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+}
+.review-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer{
+  border-top: 1px solid #ddd;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.footer-btn{
+  font: inherit;
+  cursor: pointer;
+  background-color: #0278ff;
+  color: white;
+  border: 1px solid #0278ff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
 }
 </style>
