@@ -1,7 +1,7 @@
-import PostRepository from './ItemRepository';
+import ItemRepository from './ItemRepository';
 
 const repositories = {
-  posts: PostRepository,
+  items: ItemRepository,
 };
 export default {
   get: (name) => repositories[name],

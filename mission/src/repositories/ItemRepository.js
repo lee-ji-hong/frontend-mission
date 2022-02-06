@@ -6,7 +6,7 @@ export default {
   get() {
     return Client.get(`${resource}`);
   },
-  getPost(id) {
+  getItem(id) {
     return Client.get(`${resource}/${id}`);
   },
   create(payload) {
