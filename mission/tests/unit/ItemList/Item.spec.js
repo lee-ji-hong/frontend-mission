@@ -19,11 +19,6 @@ const wrapper = mount(ItemListItem, {
   },
 });
 
-// const props = {
-//   name: 'product 1', price: 13400, description: 'description 1',
-// };
-// const testDisplayPrice = '13,400원';
-
 describe('ItemListItem', () => {
   it('redners ItemListItem', async () => {
     router.push('/item');
@@ -43,7 +38,9 @@ describe('ItemListItem', () => {
     expect(wrapper.find('[data-test="description"]').exists()).toBe(true);
 
     await wrapper.find('.item-list-item').trigger('click');
+
     await flushPromises();
-    expect(wrapper.html()).toContain('img');
+
+    expect(wrapper.findComponent(ItemInfo).exists()).toBe(true);
   });
 });
