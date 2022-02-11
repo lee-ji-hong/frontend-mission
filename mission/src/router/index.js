@@ -13,6 +13,24 @@ const routes = [
     component: () => import('../views/ItemInfo.vue'),
     props: true,
   },
+  {
+    path: '/wish',
+    name: 'WishList',
+    component: () => import('../views/WishList.vue'),
+    props: true,
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('../views/Cart.vue'),
+    props: true,
+  },
+  {
+    path: '/info',
+    name: 'MyInfo',
+    component: () => import('../views/MyInfo.vue'),
+    props: true,
+  },
 ];
 
 const router = createRouter({
