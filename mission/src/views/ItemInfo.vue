@@ -14,12 +14,14 @@
           <h3>
             <strong>{{ item.seller.name }}</strong>
           </h3>
-          <p v-for="tag in item.seller.hash_tags" :key="tag">
+          <div style="display: flex;">
+            <p v-for="tag in item.seller.hash_tags" :key="tag">
               #{{ tag }}
-          </p>
+            </p>
+          </div>
         </div>
 
-        <div data-test="company-star" class="detail__shop_btn">
+        <div class="detail__shop_btn">
           <span >
           <i class="far fa-star w3-right"></i>
           </span>
@@ -138,8 +140,6 @@ export default {
 </script>
 
 <style scoped>
-/**지홍 */
-
 .detail-wrap{
   position:relative;
   box-shadow: none;

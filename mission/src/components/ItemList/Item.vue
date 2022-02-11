@@ -3,28 +3,29 @@
   <div class="item-list-item">
   <li class="item" data-test="item">
     <div class="item_image">
-      <img :src="img" alt=""/>
+      <img :src="img" alt="상품 이미지"/>
     </div>
     <div class="product_price_wrap">
       <div
         v-if="isDiscounted"
-        class="porduct_percent"
+        class="product_percent"
         data-test="discount-rate"
       >
         {{ displayDiscountRate }}
       </div>
-      <div class="porduct_price" data-test="price">
+      <div class="product_price" data-test="price">
         {{ priceWithComma }}
       </div>
     </div>
 
-    <div class="porduct_description">
+    <div class="product_description">
       <div class="info-name" data-test="name">{{ name }}</div>
-      <div data-test="description" class="porduct_description_listname">{{ description }}</div>
+      <div data-test="description" class="product_description_listname">{{ description }}</div>
     </div>
   </li>
   </div>
 </router-link>
+<router-view :id="id"></router-view>
 </template>
 
 <script>
@@ -79,16 +80,16 @@ li{
   justify-content: flex-start;
   align-items: center;
 }
-.porduct_percent{
+.product_percent{
   color: #f34f4f;
   font-size: 15px;
   padding-left: 5px;
 }
-.porduct_price{
+.product_price{
   font-size: 15px;
   padding-left: 5px;
 }
-.porduct_description{
+.product_description{
   padding-left: 5px;
   display: flex;
   justify-content: center;
@@ -96,7 +97,7 @@ li{
   align-items: flex-start;
   color: #7f7b7b;
 }
-.porduct_description_listname{
+.product_description_listname{
   font-weight: 400;
 }
 </style>

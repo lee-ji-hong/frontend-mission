@@ -5,14 +5,14 @@
     <main>
       <div class="item-detail" data-test="item-list-page">
         <Item
-         v-for="item in items"
-         :id="item.product_no"
-         :name="item.name"
-         :img="item.image"
-         :price="item.price"
-         :original_price="item.original_price"
-         :description="item.description"
-         :key="item.product_no"
+        v-for="item in items"
+        :id="item.product_no"
+        :name="item.name"
+        :img="item.image"
+        :price="item.price"
+        :original_price="item.original_price"
+        :description="item.description"
+        :key="item.product_no"
         ></Item>
       </div>
     </main>

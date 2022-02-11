@@ -3,9 +3,9 @@
         <div class="input-bar">
             <input type="text" v-model="customInputText" @input="changeInput"/>
             <button class="rotate_btn" @click="rotateButton">회전</button>
-            <button 
-            class="counter_btn" 
-            v-on:click="showClickedInfo" 
+            <button
+            class="counter_btn"
+            v-on:click="showClickedInfo"
             data-test="clickCounter">
             클릭횟수
             </button>

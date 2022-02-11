@@ -1,21 +1,13 @@
 <template>
-<ItemList/>
   <router-view />
 </template>
 
-<script>
-// @ is an alias to /src
-import ItemList from '@/views/ItemList.vue';
-
-export default {
-  name: 'App',
-  components: {
-    ItemList,
-  },
-};
-</script>
-
 <style>
+* {
+  margin: 0;
+  text-decoration: none;
+  color: inherit; /* 링크의 색상 제거 */
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

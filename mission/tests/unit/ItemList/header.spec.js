@@ -5,7 +5,7 @@ import ItemListPage from '@/views/ItemList.vue';
 
 const routes = [
   {
-    path: '/lsit',
+    path: '/',
     component: ItemListPage,
   },
 ];
@@ -16,8 +16,8 @@ const router = createRouter({
 });
 
 describe('ItemListItem', () => {
-  it('header f렌더링 테스트', async () => {
-    router.push('/list');
+  it('header 렌더링 테스트', async () => {
+    router.push('/');
 
     await router.isReady();
 

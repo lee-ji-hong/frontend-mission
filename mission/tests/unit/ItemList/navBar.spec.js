@@ -9,7 +9,7 @@ describe('NavBar', () => {
   });
 
   it('nav에서 name 렌더링 확인', () => {
-    const testName = 'test name';
+    const testName = 'test-name';
     const wrapper = mount(NavBar, {
       data() {
         return {
@@ -18,6 +18,6 @@ describe('NavBar', () => {
       },
     });
 
-    expect(wrapper.get('[data-test="test-name"]').text()).toBe(testName);
+    expect(wrapper.get('[data-test="test-name"]').text()).toContain('홈');
   });
 });
