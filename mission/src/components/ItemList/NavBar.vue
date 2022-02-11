@@ -1,10 +1,12 @@
 <template>
-  <footer class="item-list-nav">
+  <footer class="item-list-nav" data-test="test-name">
     <li class="nav_category"
     v-for="category in categorys"
     :key="category.category_id">
-      <html data-test="test-image" v-html="category.image"></html>
-      <span class="material-icons" data-test="test-name">{{category.name}}</span>
+      <router-link :to="category.path" data-test="router-link-test">
+        <html data-test="test-image" v-html="category.image"></html>
+        <span class="material-icons" data-test="test-name">{{category.name}}</span>
+      </router-link>
     </li>
   </footer>
 </template>
@@ -18,21 +20,25 @@ export default {
           category_id: 'c1',
           name: '홈',
           image: '<i class="fas fa-home"></i>',
+          path: '/',
         },
         {
           category_id: 'c2',
           name: '찜목록',
           image: '<i class="far fa-heart"></i>',
+          path: '/wish',
         },
         {
           category_id: 'c3',
           name: '장바구니',
           image: '<i class="fas fa-shopping-cart"></i>',
+          path: '/cart',
         },
         {
           category_id: 'c4',
           name: '마이페이지',
           image: '<i class="far fa-user-circle"></i>',
+          path: '/info',
         },
       ],
     };
