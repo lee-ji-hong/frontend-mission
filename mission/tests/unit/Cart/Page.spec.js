@@ -1,47 +1,75 @@
 import { flushPromises, mount } from '@vue/test-utils';
+import { createRouter, createWebHistory } from 'vue-router';
+import { createStore } from 'vuex';
+
+import OrderPage from '@/views/Order.vue';
 import CartPage from '@/views/Cart.vue';
 import Header from '@/components/ItemList/Header.vue';
 import NavBar from '@/components/ItemList/NavBar.vue';
 import Item from '@/components/ItemList/Item.vue';
-import CartAPI from '@/repositories/CartRepository';
+
+const routes = [
+  {
+    path: '/order',
+    component: OrderPage,
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
+
+const store = createStore({
+  state: {
+    cart_item: [
+      {
+        product_no: 'asdf1234',
+        name: '핏이 좋은 수트',
+        image: 'https://projectlion-vue.s3.ap-northeast-2.amazonaws.com/items/suit-1.png',
+        price: 198000,
+        original_price: 298000,
+        description: '아주 잘 맞는 수트',
+      },
+    ],
+  },
+  getters: {
+    storedCart(state) {
+      return state.cart_item;
+    },
+  },
+});
+
+const wrapper = mount(CartPage, {
+  global: {
+    plugins: [router, store],
+  },
+});
 
 describe('CartPage', () => {
   test('renders CartPage', () => {
-    const wrapper = mount(CartPage);
+    expect(wrapper.get('[data-test="cart-list"]').exists()).toBe(true);
+  });
 
-    expect(wrapper.find('[data-test="cart-list"]').exists()).toBe(true);
+  test('CartPage에서 Order페이지로 routing되는지 ', async () => {
+    router.push('/order');
+
+    await router.isReady();
+
+    await wrapper.find('[data-test="cart-list"]').trigger('click');
+    await flushPromises();
+    expect(wrapper.findComponent(OrderPage).exists()).toBe(true);
   });
 
   test('Header component 보여지는가', () => {
-    const wrapper = mount(CartPage);
-
     expect(wrapper.findComponent(Header).exists()).toBe(true);
   });
 
   test('Item component 보여지는가', () => {
-    const wrapper = mount(CartPage);
-
-    expect(wrapper.findComponent(Item).exists()).toBe(false);
+    expect(wrapper.findComponent(Item).exists()).toBe(true);
   });
 
   test('NavBar component 보여지는가', () => {
-    const wrapper = mount(CartPage);
-
     expect(wrapper.findComponent(NavBar).exists()).toBe(true);
-  });
-});
-
-describe('CartAPI', () => {
-  const items = [{ name: '핏이 좋은 수트' }];
-  CartAPI.get = jest.fn().mockResolvedValue({
-    data: {
-      items,
-    },
-  });
-
-  it('wishAPi 호출 여부', async () => {
-    await flushPromises();
-
-    expect(CartAPI.get).toHaveBeenCalled();
   });
 });
