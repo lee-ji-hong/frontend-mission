@@ -3,10 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { createStore } from 'vuex';
 
 import OrderPage from '@/views/Order.vue';
+import OrderBtn from '@/components/OrderBtn/OrderBtn.vue';
 import CartPage from '@/views/Cart.vue';
 import Header from '@/components/ItemList/Header.vue';
-import NavBar from '@/components/ItemList/NavBar.vue';
-import Item from '@/components/ItemList/Item.vue';
+import CartItem from '@/components/Cart/CartItem.vue';
 
 const routes = [
   {
@@ -65,11 +65,11 @@ describe('CartPage', () => {
     expect(wrapper.findComponent(Header).exists()).toBe(true);
   });
 
-  test('Item component 보여지는가', () => {
-    expect(wrapper.findComponent(Item).exists()).toBe(true);
+  test('CartItem component 보여지는가', () => {
+    expect(wrapper.findComponent(CartItem).exists()).toBe(true);
   });
 
-  test('NavBar component 보여지는가', () => {
-    expect(wrapper.findComponent(NavBar).exists()).toBe(true);
+  test('OrderBtn component 보여지는가', () => {
+    expect(wrapper.findComponent(OrderBtn).exists()).toBe(true);
   });
 });
