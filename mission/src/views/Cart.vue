@@ -3,7 +3,7 @@
     <Header>장바구니</Header>
     <main>
       <div>
-        <Item
+        <CartItem
         v-for="item in storedCart"
         :id="item.product_no"
         :name="item.name"
@@ -12,23 +12,23 @@
         :original_price="item.original_price"
         :description="item.description"
         :key="item.product_no"
-        ></Item>
+        ></CartItem>
       </div>
     </main>
-    <NavBar/>
+    <OrderBtn/>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import Header from '../components/ItemList/Header.vue';
-import NavBar from '../components/ItemList/NavBar.vue';
-import Item from '../components/ItemList/Item.vue';
+import CartItem from '../components/Cart/CartItem.vue';
+import OrderBtn from '../components/OrderBtn/OrderBtn.vue';
 
 export default {
   name: 'OrderPage',
   components: {
-    Header, Item, NavBar,
+    Header, CartItem, OrderBtn,
   },
   computed: {
     ...mapGetters(['storedCart']),
