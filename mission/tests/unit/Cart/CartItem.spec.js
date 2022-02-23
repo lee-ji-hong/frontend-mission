@@ -66,6 +66,6 @@ describe('CartItem', () => {
 
     await flushPromises();
 
-    expect(wrapper.findComponent(ItemInfo).exists()).toBe(true);
+    expect(wrapper.findComponent(ItemInfo).exists()).toBe(false);
   });
 });

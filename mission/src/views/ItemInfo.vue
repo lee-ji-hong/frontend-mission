@@ -87,22 +87,26 @@
     </div>
 
     <div class="footer">
-
-      <button data-test="footer-price" class="footer-btn">
-        <span v-if="this.item.original_price">{{ priceWidthComma(item.price) }}</span>
-        <span v-else>{{ priceWidthComma(item.original_price) }}</span>원 구매
-      </button>
+      <CartBtn/>
+      <router-link to="/order">
+        <button data-test="footer-price" class="footer-order-btn">
+          <span v-if="this.item.original_price">{{ priceWidthComma(item.price) }}</span>
+          <span v-else>{{ priceWidthComma(item.original_price) }}</span>원 구매
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 import RepositoryFactory from '@/repositories/RepositoryFactory';
+import CartBtn from '../components/OrderBtn/CartBtn.vue';
 
 const ItemRepository = RepositoryFactory.get('items');
 
 export default {
   name: 'ItemInfoPage',
+  components: { CartBtn },
   props: {
     id: { type: String, default: '' },
   },
@@ -286,11 +290,12 @@ button:active {
   align-items: center;
 }
 .footer{
+  padding: 0px 20px;
   border-top: 1px solid #ddd;
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: white;
   height: 60px;
   position: fixed;
@@ -298,13 +303,15 @@ button:active {
   left: 0;
   right: 0;
 }
-.footer-btn{
+.footer-order-btn{
   font: inherit;
   cursor: pointer;
-  background-color: #0278ff;
+  background-color: black;
   color: white;
-  border: 1px solid #0278ff;
+  border: 1px solid black;
   padding: 0.5rem 1.5rem;
-  border-radius: 30px;
+  border-radius: 8px;
+  width: 200px;
+  height: 50px;
 }
 </style>

@@ -28,7 +28,7 @@ import Header from '../components/ItemList/Header.vue';
 import NavBar from '../components/ItemList/NavBar.vue';
 import Item from '../components/ItemList/Item.vue';
 
-const ItemRepository = RepositoryFactory.get('wishes');
+const WishRepository = RepositoryFactory.get('wishes');
 
 export default {
   name: 'WishListPage',
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async getItems() {
-      const { data } = await ItemRepository.get();
+      const { data } = await WishRepository.get();
       this.items = data.items;
     },
   },

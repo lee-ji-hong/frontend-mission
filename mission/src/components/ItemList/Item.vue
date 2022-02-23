@@ -3,7 +3,7 @@
   <div class="item-list-item">
   <li class="item" data-test="item">
     <div class="item_image">
-      <img :src="img" alt="상품 이미지"/>
+      <img :src="img" alt="상품 이미지" style="border: 1px solid #ddd;"/>
     </div>
     <div class="product_price_wrap">
       <div
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'ItemListItem',
   props: {

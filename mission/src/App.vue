@@ -7,6 +7,7 @@
   margin: 0;
   text-decoration: none;
   color: inherit; /* 링크의 색상 제거 */
+  list-style: none;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

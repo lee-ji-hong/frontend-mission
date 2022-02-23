@@ -31,6 +31,18 @@ const routes = [
     component: () => import('../views/MyInfo.vue'),
     props: true,
   },
+  {
+    path: '/order',
+    name: 'Order',
+    component: () => import('../views/Order.vue'),
+    props: true,
+  },
+  {
+    path: '/complete',
+    name: 'Complete',
+    component: () => import('../views/Complete.vue'),
+    props: true,
+  },
 ];
 
 const router = createRouter({

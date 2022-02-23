@@ -15,7 +15,6 @@ const getters = {
   storedCart() {
     return state.cart_item;
   },
-
 };
 
 const mutations = {
